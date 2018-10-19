@@ -8,7 +8,9 @@ script/source = "extends Node
 
 var base_object = load(\"res://Objects/base_object/base_flammable.tscn\")
 var base_explosive = load(\"res://Objects/explosives/base_explosive.tscn\")
-var spawnable_objs = [load(\"res://Objects/base_object/base_flammable.tscn\"), base_explosive]
+var extinguisher = load(\"res://Objects/extinguisher/extinguisher.tscn\")
+var oil = load(\"res://Objects/oil/oil.tscn\")
+var spawnable_objs = [base_object, base_explosive,extinguisher,oil]
 var spawn_obj = 0
 
 func _ready():
