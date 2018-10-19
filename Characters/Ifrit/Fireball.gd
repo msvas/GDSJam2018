@@ -13,3 +13,13 @@ func _process(delta):
 	traveled += movement.length()
 	if traveled >= max_reach and not $anim.is_playing():
 		$anim.play("fade")
+
+
+func _on_Fireball_body_entered(body):
+	if body.has_method("ignite"):
+		#activate flammable object
+		body.ignite()
+		
+		#destroy fireball
+		set_process(false)
+		$anim.play("fade") 

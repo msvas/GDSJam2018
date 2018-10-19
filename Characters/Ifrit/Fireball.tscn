@@ -90,4 +90,6 @@ playback_speed = 1.0
 anims/fade = SubResource( 2 )
 blend_times = [  ]
 
+[connection signal="body_entered" from="." to="." method="_on_Fireball_body_entered"]
+
 
