@@ -25,7 +25,7 @@ func _process(delta):
 		obj.ignite()
 "
 
-[node name="test area" type="Node2D" index="0"]
+[node name="test area" type="Node2D"]
 
 script = SubResource( 1 )
 

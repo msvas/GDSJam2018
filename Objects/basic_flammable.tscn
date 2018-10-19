@@ -103,16 +103,17 @@ radius = 204.287
 position = Vector2( 372.09, 369.764 )
 input_pickable = false
 collision_layer = 1
-collision_mask = 1
+collision_mask = 3
 collision/safe_margin = 0.08
 script = SubResource( 1 )
+_sections_unfolded = [ "Collision" ]
 flamability = 3
 burnability = 4
 REFRESH_RATE = 0.1
 
 [node name="object body" type="CollisionShape2D" parent="." index="0"]
 
-position = Vector2( 0.368256, 1.06569 )
+position = Vector2( 0.368256, 1.0657 )
 scale = Vector2( 3.17924, 3.17924 )
 shape = SubResource( 2 )
 
