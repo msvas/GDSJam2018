@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends Node
+
+var flammable_object = load(\"res://Objects/basic_flammable.tscn\")
+
+func _ready():
+	set_process(true)
+
+func _process(delta):
+	if Input.is_action_just_pressed(\"ui_up\"):
+		var obj = flammable_object.instance()
+		obj.position = get_global_mouse_position()
+		add_child(obj)
+	if Input.is_action_just_pressed(\"ui_down\"):
+		var obj = flammable_object.instance()
+		obj.position = get_global_mouse_position()
+		add_child(obj)
+		obj.ignite()
+"
+
+[node name="test area" type="Node2D"]
+
+script = SubResource( 1 )
+
+
