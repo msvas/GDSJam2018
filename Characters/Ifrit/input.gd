@@ -24,5 +24,5 @@ func movement():
 
 func shoot():
 	if Input.is_action_just_pressed("shoot"):
-		var direction = get_viewport().get_mouse_position() - ifrit.position
+		var direction = ifrit.get_global_mouse_position() - ifrit.position
 		ifrit.get_action("shoot").execute(direction)
