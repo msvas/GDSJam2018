@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Characters/Ifrit/Ifrit.tscn" type="PackedScene" id=1]
 
@@ -6,30 +6,75 @@
 
 script/source = "extends Node
 
-var flammable_object = load(\"res://Objects/basic_flammable.tscn\")
+var base_object = load(\"res://Objects/base_object/base_flammable.tscn\")
+var base_explosive = load(\"res://Objects/explosives/base_explosive.tscn\")
+var spawnable_objs = [load(\"res://Objects/base_object/base_flammable.tscn\"), base_explosive]
+var spawn_obj = 0
 
 func _ready():
 	set_process(true)
 
 func _process(delta):
+	#Change spawnable object
+	if Input.is_action_just_pressed(\"ui_right\"):
+		if spawn_obj + 1 == spawnable_objs.size():
+			spawn_obj = 0
+		else:
+			spawn_obj += 1
+	
 	#Insert base flammable object
 	if Input.is_action_just_pressed(\"ui_up\"):
-		var obj = flammable_object.instance()
+		var obj = spawnable_objs[spawn_obj].instance()
 		obj.position = get_global_mouse_position()
 		add_child(obj)
 	
 	#Insert ignited base flammable object
 	if Input.is_action_just_pressed(\"ui_down\"):
-		var obj = flammable_object.instance()
+		var obj = spawnable_objs[spawn_obj].instance()
 		obj.position = get_global_mouse_position()
 		add_child(obj)
 		obj.ignite()
 "
 
-[node name="test area" type="Node2D"]
+[sub_resource type="GDScript" id=2]
+
+script/source = "extends Label
+
+# class member variables go here, for example:
+# var a = 2
+# var b = \"textvar\"
+
+func _ready():
+	set_process(true)
+
+func _process(delta):
+	text = \"Spawn_obj = \" + str(get_node(\"..\").spawn_obj)"
+
+[node name="test area" type="Node2D" index="0"]
 
 script = SubResource( 1 )
 
 [node name="Ifrit" parent="." index="0" instance=ExtResource( 1 )]
+
+position = Vector2( 504.4, 293.097 )
+
+[node name="Label" type="Label" parent="." index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 14.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+script = SubResource( 2 )
 
 

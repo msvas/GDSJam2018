@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Objects/base_object/base_flammable.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=3]
+
+custom_solver_bias = 0.0
+radius = 204.287
+
+[node name="object" type="KinematicBody2D"]
+
+position = Vector2( 372.09, 369.764 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 3
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+_sections_unfolded = [ "Collision" ]
+flamability = 3
+burnability = 4
+REFRESH_RATE = 0.1
+
+[node name="object body" type="CollisionShape2D" parent="." index="0"]
+
+position = Vector2( 0.368256, 1.0657 )
+scale = Vector2( 3.17924, 3.17924 )
+shape = SubResource( 1 )
+
+[node name="sprite" type="AnimatedSprite" parent="." index="1"]
+
+frames = SubResource( 2 )
+animation = "default"
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="flame area" type="Area2D" parent="." index="2"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="area shape" type="CollisionShape2D" parent="flame area" index="0"]
+
+shape = SubResource( 3 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+
