@@ -11,5 +11,5 @@ func _process(delta):
 	position += movement
 	
 	traveled += movement.length()
-	if traveled >= max_reach:
-		queue_free()
+	if traveled >= max_reach and not $anim.is_playing():
+		$anim.play("fade")
