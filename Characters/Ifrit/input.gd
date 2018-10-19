@@ -5,6 +5,7 @@ onready var ifrit = get_node(_ifrit)
 
 func _process(delta):
 	movement()
+	shoot()
 
 func movement():
 	var direction = Vector2()
@@ -20,3 +21,8 @@ func movement():
 	
 	if direction != Vector2():
 		ifrit.get_action("move").execute(direction)
+
+func shoot():
+	if Input.is_action_just_pressed("shoot"):
+		var direction = get_viewport().get_mouse_position() - ifrit.position
+		ifrit.get_action("shoot").execute(direction)
