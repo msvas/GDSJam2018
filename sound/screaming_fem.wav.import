@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/screaming_fem.wav-a52341bf93b835170c07b0391732f15a.sample"
+
+[deps]
+
+source_file="res://sound/screaming_fem.wav"
+dest_files=[ "res://.import/screaming_fem.wav-a52341bf93b835170c07b0391732f15a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

@@ -11,7 +11,7 @@ onready var game_over = get_node(\"../menus/game_over\")
 onready var game_won = get_node(\"../menus/game_won\")
 onready var opening = get_node(\"../menus/opening\")
 
-var main_game_scene = load(\"res://Interface/interface.tscn\")
+var main_game_scene = load(\"res://Maps/Base_map.tscn\")
 
 var status 
 

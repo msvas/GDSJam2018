@@ -167,45 +167,45 @@ enabled = true
 
 position = Vector2( 511.967, 330.262 )
 
-[node name="object15" parent="." index="4" instance=ExtResource( 3 )]
+[node name="guy" parent="." index="4" instance=ExtResource( 3 )]
 
 position = Vector2( 1242, 3412 )
 _navigation = NodePath("../Navigation2D")
 
-[node name="object25" parent="." index="5" instance=ExtResource( 4 )]
+[node name="girl" parent="." index="5" instance=ExtResource( 4 )]
 
 position = Vector2( 1662, 3382 )
 _navigation = NodePath("../Navigation2D")
 
-[node name="object4" parent="." index="6" instance=ExtResource( 5 )]
+[node name="oil barrel" parent="." index="6" instance=ExtResource( 5 )]
 
 position = Vector2( 232, 3452 )
 
-[node name="object5" parent="." index="7" instance=ExtResource( 6 )]
+[node name="extinguisher" parent="." index="7" instance=ExtResource( 6 )]
 
 position = Vector2( 2132, 3362 )
 
-[node name="object6" parent="." index="8" instance=ExtResource( 7 )]
+[node name="box" parent="." index="8" instance=ExtResource( 7 )]
 
 position = Vector2( 2382, 3362 )
 
-[node name="object7" parent="." index="9" instance=ExtResource( 8 )]
+[node name="boxes" parent="." index="9" instance=ExtResource( 8 )]
 
 position = Vector2( 2782, 3402 )
 
-[node name="object8" parent="." index="10" instance=ExtResource( 9 )]
+[node name="oil" parent="." index="10" instance=ExtResource( 9 )]
 
 position = Vector2( 852, 3442 )
 
-[node name="object9" parent="." index="11" instance=ExtResource( 10 )]
+[node name="paper" parent="." index="11" instance=ExtResource( 10 )]
 
 position = Vector2( 822, 3332 )
 
-[node name="object3" parent="." index="12" instance=ExtResource( 11 )]
+[node name="car" parent="." index="12" instance=ExtResource( 11 )]
 
-position = Vector2( 892, 2132 )
+position = Vector2( -650, 3020 )
 
-[node name="object10" parent="." index="13" instance=ExtResource( 12 )]
+[node name="trash" parent="." index="13" instance=ExtResource( 12 )]
 
 position = Vector2( 582, 3282 )
 
