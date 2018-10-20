@@ -74,7 +74,7 @@ anim_offset_random = 0.0
 anim_loop = true
 _sections_unfolded = [ "Color" ]
 
-[node name="fire" type="Sprite" index="0"]
+[node name="fire" type="Sprite"]
 
 texture = ExtResource( 1 )
 hframes = 3
@@ -115,7 +115,6 @@ v_frames = 1
 
 [node name="Light2D" type="Light2D" parent="." index="2"]
 
-scale = Vector2( 2, 2 )
 enabled = true
 editor_only = false
 texture = ExtResource( 3 )
@@ -137,6 +136,5 @@ shadow_gradient_length = 0.0
 shadow_filter = 0
 shadow_filter_smooth = 0.0
 shadow_item_cull_mask = 1
-_sections_unfolded = [ "Transform" ]
 
 
