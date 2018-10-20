@@ -1,0 +1,94 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Characters/Ifrit/Ifrit.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Objects/base_object/base_flammable.tscn" type="PackedScene" id=2]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends Node2D
+
+onready var window_manager = $\"../manager\"
+
+var REFRESH_RATE = 0.1
+var ifrit_fuel = 100
+
+func _ready():
+	countdown_timer(REFRESH_RATE, \"fuel_decreaser\", false)
+	set_process(true)
+
+func _process(delta):
+	HUD_refresher()
+
+func fuel_decreaser():
+	var fuel_decrease = 10 #fuel decreased in a second
+	ifrit_fuel -= fuel_decrease * REFRESH_RATE
+	
+	if not ifrit_fuel:
+		window_manager.game_over()
+
+func HUD_refresher():
+	$\"HUD/fuel meter\".value = ifrit_fuel
+
+#SUPPPORT METHODS
+func countdown_timer(time, function, oneshot = true):
+	#Instance timer
+	var timer = Timer.new()
+	add_child(timer)
+
+	#Configure timer
+	timer.one_shot = oneshot
+	timer.set_wait_time(time)
+	timer.connect(\"timeout\",self,function)
+
+	#Initialize timer
+	timer.start()
+	return timer"
+
+[node name="match_scene" type="Node2D"]
+
+script = SubResource( 1 )
+
+[node name="HUD" type="CanvasLayer" parent="." index="0"]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="fuel meter" type="ProgressBar" parent="HUD" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 360.0
+margin_top = 11.0
+margin_right = 661.0
+margin_bottom = 27.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+page = 0.0
+value = 100.0
+exp_edit = false
+rounded = false
+percent_visible = true
+
+[node name="units" type="YSort" parent="." index="1"]
+
+sort_enabled = true
+
+[node name="Ifrit" parent="units" index="0" instance=ExtResource( 1 )]
+
+position = Vector2( 512.216, 302.274 )
+
+[node name="object" parent="units" index="1" instance=ExtResource( 2 )]
+
+
