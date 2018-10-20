@@ -2,6 +2,8 @@ extends Node
 
 export(NodePath) var _ifrit = @".."
 onready var ifrit = get_node(_ifrit)
+onready var anim = ifrit.get_node("anim")
+onready var sprite = ifrit.get_node("sprite")
 
 func _process(delta):
 	movement()
@@ -21,6 +23,16 @@ func movement():
 	
 	if direction != Vector2():
 		ifrit.get_action("move").execute(direction)
+		
+		if direction.x < 0:
+			sprite.flip_h = true
+		elif direction.x > 0:
+			sprite.flip_h = false
+		
+		if not anim.is_playing():
+			anim.play("walk")
+	else:
+		sprite.frame = 0
 
 func shoot():
 	if Input.is_action_just_pressed("shoot"):
