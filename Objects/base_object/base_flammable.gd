@@ -7,7 +7,7 @@ onready var fire_childs_node = get_node("fire sprites")
 
 #OBJECT CUSTOMIZABLE VARIABLES
 export var flamability = 3  #Time in seconds till object ignites
-export var burnability = 4  #Time in seconds till object extinguish
+export var burnability = 10  #Time in seconds till object extinguish
 export var REFRESH_RATE = 0.1 #Seconds till object apply heat over near objects
 var is_burning = false
 
