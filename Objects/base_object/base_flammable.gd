@@ -22,6 +22,8 @@ func _ready():
 	pass
 
 func ignite():
+	get_node("fire sound").play(0)
+	
 	is_burning = true
 	countdown_timer(burnability, "extinguish")
 	burn_bodies_timer = countdown_timer(REFRESH_RATE, "heat_near_bodies", false)

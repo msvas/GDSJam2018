@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/explosion (online-audio-converter.com).wav-efc635edb5a94171127cabaa1d949370.sample"
+
+[deps]
+
+source_file="res://sound/explosion (online-audio-converter.com).wav"
+dest_files=[ "res://.import/explosion (online-audio-converter.com).wav-efc635edb5a94171127cabaa1d949370.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

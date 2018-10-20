@@ -58,6 +58,8 @@ func random_walk():
 func ignite_reaction():
 	$"Sprite/anim".play("burn")
 	speed *= 2
+	
+	get_node("AudioStreamPlayer2D").play(0)
 
 func extinguish_reaction():
 	emit_signal("dead")
