@@ -22,7 +22,7 @@ animations = [ {
 [sub_resource type="CircleShape2D" id=3]
 
 custom_solver_bias = 0.0
-radius = 204.287
+radius = 129.393
 
 [node name="object" type="KinematicBody2D"]
 
@@ -58,6 +58,7 @@ visible = false
 
 [node name="flame area" type="Area2D" parent="." index="3"]
 
+visible = false
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
