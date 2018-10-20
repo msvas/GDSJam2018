@@ -8,7 +8,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 9.66083, 4.74115 )
+extents = Vector2( 6.10152, 2.40718 )
 
 [sub_resource type="SpriteFrames" id=2]
 
