@@ -11,3 +11,6 @@ func _execute(direction):
 	projectile.position = character.position
 	projectile.direction = direction.normalized()
 	add_child(projectile)
+	
+	#shots now cost fuel
+	attributes.fuel -= attributes.shoot_fuel_cost

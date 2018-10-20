@@ -27,7 +27,7 @@ func fuel_decreaser():
 	
 	ifrit.set_attribute(\"fuel\", actual_fuel)
 	
-	if not actual_fuel:
+	if actual_fuel <= 0:
 		window_manager.game_over()
 
 func HUD_refresher():
