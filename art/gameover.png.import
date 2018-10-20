@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/wall.png-a390048f5e12dd0b271d636d681186c9.stex"
+path="res://.import/gameover.png-9f60c5e066e7151f1fa4ae3328129b1c.stex"
 
 [deps]
 
-source_file="res://art/wall.png"
-dest_files=[ "res://.import/wall.png-a390048f5e12dd0b271d636d681186c9.stex" ]
+source_file="res://art/gameover.png"
+dest_files=[ "res://.import/gameover.png-9f60c5e066e7151f1fa4ae3328129b1c.stex" ]
 
 [params]
 
@@ -16,7 +16,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

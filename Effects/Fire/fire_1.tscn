@@ -74,7 +74,7 @@ anim_offset_random = 0.0
 anim_loop = true
 _sections_unfolded = [ "Color" ]
 
-[node name="fire" type="Sprite"]
+[node name="fire" type="Sprite" index="0"]
 
 texture = ExtResource( 1 )
 hframes = 3
@@ -121,7 +121,7 @@ texture = ExtResource( 3 )
 offset = Vector2( 0, 0 )
 texture_scale = 1.0
 color = Color( 0.921875, 0.770827, 0.594177, 1 )
-energy = 1.0
+energy = 0.5
 mode = 0
 range_height = 0.0
 range_z_min = -1024

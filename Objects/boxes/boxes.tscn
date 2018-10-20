@@ -3,7 +3,6 @@
 [ext_resource path="res://Objects/base_object/base_flammable.tscn" type="PackedScene" id=1]
 [ext_resource path="res://art/box_2.png" type="Texture" id=2]
 [ext_resource path="res://Effects/Fire/fire_2.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Effects/Fire/fire_1.tscn" type="PackedScene" id=4]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -16,15 +15,23 @@ animations = [ {
 
 [sub_resource type="StreamTexture" id=2]
 
-flags = 4
+flags = 0
 load_path = "res://.import/fire2.png-51b04189171611a2db958173f418ad20.stex"
 
 [sub_resource type="StreamTexture" id=3]
 
-flags = 4
+flags = 0
 load_path = "res://.import/fire2.png-51b04189171611a2db958173f418ad20.stex"
 
-[node name="object" instance=ExtResource( 1 )]
+[sub_resource type="CircleShape2D" id=4]
+
+custom_solver_bias = 0.0
+radius = 163.759
+
+[node name="object" index="0" instance=ExtResource( 1 )]
+
+start_burning = false
+burn_humans = true
 
 [node name="object body" parent="." index="0"]
 
@@ -36,52 +43,39 @@ position = Vector2( 0, -51 )
 frames = SubResource( 1 )
 animation = "New Anim"
 
+[node name="fire sprites" parent="." index="2"]
+
+visible = true
+
 [node name="fire" parent="fire sprites" index="0"]
 
-position = Vector2( 4.67073, -80.7141 )
+position = Vector2( -1.96349, -92.6557 )
 scale = Vector2( 1.19662, 1.17513 )
 flip_h = true
 _sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
 
-[node name="fire3" parent="fire sprites" index="1" instance=ExtResource( 3 )]
+[node name="fire7" parent="fire sprites" index="1" instance=ExtResource( 3 )]
 
-position = Vector2( -16.1331, -79.1421 )
-scale = Vector2( 1.88051, 1.88282 )
-z_index = -1
-texture = SubResource( 2 )
-_sections_unfolded = [ "Animation", "Transform", "Z Index" ]
-
-[node name="fire4" parent="fire sprites" index="2" instance=ExtResource( 3 )]
-
-position = Vector2( 14.127, -52.1241 )
-scale = Vector2( 1.88051, 1.88282 )
-z_index = -1
-texture = SubResource( 2 )
-_sections_unfolded = [ "Animation", "Transform", "Z Index" ]
-
-[node name="fire7" parent="fire sprites" index="3" instance=ExtResource( 3 )]
-
-position = Vector2( -0.462723, -27.8079 )
+position = Vector2( -16.3848, -25.8176 )
 scale = Vector2( 1.08686, 1.2918 )
 texture = SubResource( 2 )
 _sections_unfolded = [ "Animation", "Transform", "Z Index" ]
 
-[node name="fire5" parent="fire sprites" index="4" instance=ExtResource( 4 )]
+[node name="fire2" parent="fire sprites" index="2"]
 
-position = Vector2( -32.4664, -64.5524 )
-scale = Vector2( 1.53896, 1.51132 )
-
-[node name="fire6" parent="fire sprites" index="5" instance=ExtResource( 4 )]
-
-position = Vector2( -17.7514, -101.297 )
-scale = Vector2( 0.816766, 0.802097 )
-
-[node name="fire2" parent="fire sprites" index="6"]
-
-position = Vector2( 5.6247, -111.633 )
+position = Vector2( -14.9413, -103.672 )
 scale = Vector2( 1.69925, 1.69925 )
 z_index = -1
 texture = SubResource( 3 )
 _sections_unfolded = [ "Animation", "Transform", "Z Index" ]
+
+[node name="flame area" parent="." index="3"]
+
+visible = false
+position = Vector2( 0, -45.776 )
+
+[node name="area shape" parent="flame area" index="0"]
+
+shape = SubResource( 4 )
 
 
