@@ -58,8 +58,13 @@ func heat_near_bodies():
 	sprite_node.modulate = Color(mod_color[0],mod_color[1],mod_color[2])
 
 	for body in flame_area_node.get_overlapping_bodies():
+		#slowly ignites flammable objects
 		if body.get("is_burning") == false:
 			body.burn(REFRESH_RATE)
+		
+		#refuels ifrit
+		if body.has_method("has_action") and body.has_action("refuel"):
+			body.get_action("refuel")._execute()
 
 #SUPPPORT METHODS
 

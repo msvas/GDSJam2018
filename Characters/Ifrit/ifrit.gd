@@ -15,4 +15,6 @@ func has_attribute(attribute):
 
 func get_attribute(attribute):
 	return attributes.get(attribute)
-	
+
+func set_attribute(attribute, value):
+	attributes.set(attribute, value)
