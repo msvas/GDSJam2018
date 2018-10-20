@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Maps/Navigation.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Objects/human/human.tscn" type="PackedScene" id=2]
 
 [sub_resource type="NavigationPolygon" id=1]
 
@@ -9,46 +9,7 @@ vertices = PoolVector2Array( 664.673, 195.197, 730.047, 286.055, 613.704, 315.97
 polygons = [ PoolIntArray( 0, 1, 2, 3, 4 ), PoolIntArray( 5, 6, 7, 8 ), PoolIntArray( 0, 9, 10, 6, 1 ), PoolIntArray( 3, 2, 8, 7, 11 ), PoolIntArray( 12, 10, 9 ), PoolIntArray( 12, 9, 4 ), PoolIntArray( 6, 5, 1 ), PoolIntArray( 12, 4, 3, 13, 14 ), PoolIntArray( 7, 14, 13, 11 ), PoolIntArray( 3, 11, 15 ) ]
 outlines = [ PoolVector2Array( 15.3657, 10.1551, 15.3657, 563.064, 1005.95, 590.765, 1009.27, 5.72301, 186.003, 38.964 ), PoolVector2Array( 145.006, 161.956, 140.573, 431.208, 214.812, 297.136, 320.075, 283.839 ), PoolVector2Array( 613.704, 315.972, 564.95, 466.665, 733.371, 455.585, 730.047, 286.055 ), PoolVector2Array( 470.767, 145.335, 664.673, 195.197, 594.867, 45.6122 ) ]
 
-[sub_resource type="GDScript" id=2]
-
-script/source = "extends KinematicBody2D
-
-export var speed = 300
-export var threshold = 5
-
-onready var navigation = get_node(\"../Navigation\")
-
-var path = PoolVector2Array()
-
-func _ready():
-	update_path()
-	$timer.wait_time = rand_range(1, 5)
-	$timer.connect(\"timeout\", self, \"update_path\")
-
-func _process(delta):
-	# walk along path
-	if path.size() > 0:
-		var distance = (path[0] - position).length()
-		var direction = (path[0] - position).normalized()
-		move_and_slide(direction * speed)
-		
-		if distance <= threshold:
-			path.remove(0)
-	elif $timer.is_stopped():
-		$timer.wait_time = rand_range(1, 5)
-		$timer.start()
-
-func update_path():
-	var rect = get_viewport_rect()
-	var point = Vector2()
-	
-	point.x = rand_range(rect.position.x, rect.end.x)
-	point.y = rand_range(rect.position.y, rect.end.y)
-	
-	path = navigation.get_simple_path(position, point)
-"
-
-[node name="Node2D" type="Node2D" index="0"]
+[node name="Node2D" type="Node2D"]
 
 _sections_unfolded = [ "Transform" ]
 
@@ -61,27 +22,9 @@ script = ExtResource( 1 )
 navpoly = SubResource( 1 )
 enabled = true
 
-[node name="Agent" type="KinematicBody2D" parent="." index="1"]
+[node name="object" parent="." index="1" instance=ExtResource( 2 )]
 
-position = Vector2( 83.1025, 75.3463 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-collision/safe_margin = 0.08
-script = SubResource( 2 )
-speed = 100
-threshold = 5
-
-[node name="Sprite" type="Sprite" parent="Agent" index="0"]
-
-texture = ExtResource( 2 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="timer" type="Timer" parent="Agent" index="1"]
-
-process_mode = 1
-wait_time = 1.0
-one_shot = true
-autostart = false
+position = Vector2( 468.698, 250.416 )
+_navigation = NodePath("../Navigation")
 
 
