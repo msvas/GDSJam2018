@@ -17,8 +17,9 @@ func _process(delta):
 
 func _on_Fireball_body_entered(body):
 	if body.has_method("ignite"):
-		#activate flammable object
-		body.ignite()
+		#activate flammable object if hasnt yet
+		if body.get("is_burning") == false:
+			body.ignite()
 		
 		#destroy fireball
 		set_process(false)
