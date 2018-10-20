@@ -1,17 +1,18 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://Maps/tileset.tres" type="TileSet" id=1]
-[ext_resource path="res://Characters/Ifrit/Ifrit.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Objects/human/human.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Objects/human/human2.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Objects/oil barrel/oil barrel.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Objects/extinguisher/extinguisher.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Objects/box/box.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Objects/boxes/boxes.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Objects/oil/oil.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Objects/paper/paper.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Objects/car/car.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Objects/trash/trash.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Interface/HUD.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Maps/tileset.tres" type="TileSet" id=2]
+[ext_resource path="res://Characters/Ifrit/Ifrit.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Objects/human/human.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Objects/human/human2.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Objects/oil barrel/oil barrel.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Objects/extinguisher/extinguisher.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Objects/box/box.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Objects/boxes/boxes.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Objects/oil/oil.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Objects/paper/paper.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Objects/car/car.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Objects/trash/trash.tscn" type="PackedScene" id=13]
 
 [sub_resource type="GDScript" id=1]
 
@@ -79,63 +80,12 @@ outlines = [ PoolVector2Array( -650, -440, -624.935, 1080.48, 1940, 1080, 1931.6
 sort_enabled = true
 script = SubResource( 1 )
 
-[node name="HUD" type="CanvasLayer" parent="." index="0"]
-
-layer = 1
-offset = Vector2( 0, 0 )
-rotation = 0.0
-scale = Vector2( 1, 1 )
-transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-
-[node name="fuel meter" type="ProgressBar" parent="HUD" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 160.0
-margin_top = 50.0
-margin_right = 840.0
-margin_bottom = 70.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 0
-min_value = 0.0
-max_value = 100.0
-step = 1.0
-page = 0.0
-value = 100.0
-exp_edit = false
-rounded = false
-percent_visible = true
-
-[node name="humans_killed" type="Label" parent="HUD" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 60.0
-margin_top = 130.0
-margin_right = 310.0
-margin_bottom = 290.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
+[node name="HUD" parent="." index="0" instance=ExtResource( 1 )]
 
 [node name="TileMap" type="TileMap" parent="." index="1"]
 
 mode = 0
-tile_set = ExtResource( 1 )
+tile_set = ExtResource( 2 )
 cell_size = Vector2( 64, 64 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -163,49 +113,49 @@ scale = Vector2( 1.19691, 2.03226 )
 navpoly = SubResource( 2 )
 enabled = true
 
-[node name="Ifrit" parent="." index="3" instance=ExtResource( 2 )]
+[node name="Ifrit" parent="." index="3" instance=ExtResource( 3 )]
 
 position = Vector2( 511.967, 330.262 )
 
-[node name="guy" parent="." index="4" instance=ExtResource( 3 )]
+[node name="guy" parent="." index="4" instance=ExtResource( 4 )]
 
 position = Vector2( 740, 380 )
 _navigation = NodePath("../Navigation2D")
 
-[node name="girl" parent="." index="5" instance=ExtResource( 4 )]
+[node name="girl" parent="." index="5" instance=ExtResource( 5 )]
 
 position = Vector2( 270, 230 )
 _navigation = NodePath("../Navigation2D")
 
-[node name="oil barrel" parent="." index="6" instance=ExtResource( 5 )]
+[node name="oil barrel" parent="." index="6" instance=ExtResource( 6 )]
 
 position = Vector2( 232, 3452 )
 
-[node name="extinguisher" parent="." index="7" instance=ExtResource( 6 )]
+[node name="extinguisher" parent="." index="7" instance=ExtResource( 7 )]
 
 position = Vector2( 2132, 3362 )
 
-[node name="box" parent="." index="8" instance=ExtResource( 7 )]
+[node name="box" parent="." index="8" instance=ExtResource( 8 )]
 
 position = Vector2( 2382, 3362 )
 
-[node name="boxes" parent="." index="9" instance=ExtResource( 8 )]
+[node name="boxes" parent="." index="9" instance=ExtResource( 9 )]
 
 position = Vector2( 2782, 3402 )
 
-[node name="oil" parent="." index="10" instance=ExtResource( 9 )]
+[node name="oil" parent="." index="10" instance=ExtResource( 10 )]
 
 position = Vector2( 1130, 3280 )
 
-[node name="paper" parent="." index="11" instance=ExtResource( 10 )]
+[node name="paper" parent="." index="11" instance=ExtResource( 11 )]
 
 position = Vector2( 822, 3332 )
 
-[node name="car" parent="." index="12" instance=ExtResource( 11 )]
+[node name="car" parent="." index="12" instance=ExtResource( 12 )]
 
 position = Vector2( 320, 420 )
 
-[node name="trash" parent="." index="13" instance=ExtResource( 12 )]
+[node name="trash" parent="." index="13" instance=ExtResource( 13 )]
 
 position = Vector2( 582, 3282 )
 
