@@ -8,7 +8,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 6.63959, 3.40212 )
+extents = Vector2( 3.32857, 2.44679 )
 
 [sub_resource type="SpriteFrames" id=2]
 
@@ -24,7 +24,7 @@ animations = [ {
 custom_solver_bias = 0.0
 radius = 204.287
 
-[node name="object" type="KinematicBody2D" index="0"]
+[node name="object" type="KinematicBody2D"]
 
 input_pickable = false
 collision_layer = 1

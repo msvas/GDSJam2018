@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Objects/base_object/base_flammable.tscn" type="PackedScene" id=1]
+[ext_resource path="res://art/person1.png" type="Texture" id=2]
+
+[sub_resource type="GDScript" id=2]
+
+script/source = "extends \"res://Objects/base_object/base_flammable.gd\"
+
+func _ready():
+	set_process(true)
+
+func _process(delta):
+	random_walk()
+
+func random_walk():
+	pass
+
+func ignite_reaction():
+	$\"Sprite\".frame = 0
+
+func extinguish_reaction():
+	get_node(\"../..\").human_died()"
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 4.93043, 4.38395 )
+
+[node name="object" instance=ExtResource( 1 )]
+
+script = SubResource( 2 )
+
+[node name="object body" parent="." index="0"]
+
+position = Vector2( 0.368256, -6.93431 )
+shape = SubResource( 1 )
+
+[node name="sprite" parent="." index="1"]
+
+visible = false
+
+[node name="Sprite" type="Sprite" parent="." index="4"]
+
+position = Vector2( 3, -27 )
+texture = ExtResource( 2 )
+vframes = 2
+hframes = 4
+frame = 4
+_sections_unfolded = [ "Animation" ]
+
+

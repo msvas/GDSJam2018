@@ -8,6 +8,7 @@ script/source = "extends Node
 onready var main
 onready var pause = get_node(\"../menus/pause_menu\")
 onready var game_over = get_node(\"../menus/game_over\")
+onready var game_won = get_node(\"../menus/game_won\")
 onready var opening = get_node(\"../menus/opening\")
 
 var main_game_scene = load(\"res://Interface/interface.tscn\")
@@ -19,6 +20,7 @@ func _ready():
 	opening.visible = true
 	pause.visible = false
 	game_over.visible = false
+	game_won.visible = false
 	
 	set_process(true)
 
@@ -37,6 +39,10 @@ func start_game():
 func game_over():
 	main.queue_free()
 	show_window(\"game_over\")
+
+func game_won():
+	main.queue_free()
+	show_window(\"game_won\")
 
 #MENU MANAGEMENT METHODS
 func show_window(window):
@@ -64,9 +70,14 @@ func _on_game_over_button_pressed():
 func _on_new_game_button_pressed():
 	opening.visible = false
 	start_game()
+
+
+func _on_game_won_button_pressed():
+	game_won.visible = false
+	start_game()
 "
 
-[node name="game" type="Node"]
+[node name="game" type="Node" index="0"]
 
 [node name="manager" type="Node" parent="." index="0"]
 
@@ -145,7 +156,6 @@ align = 1
 
 [node name="game_over" type="Node2D" parent="menus" index="2"]
 
-editor/display_folded = true
 visible = false
 
 [node name="game_over_button" type="Button" parent="menus/game_over" index="0"]
@@ -173,10 +183,66 @@ text = "Restart"
 flat = false
 align = 1
 
+[node name="game_won" type="Node2D" parent="menus" index="3"]
+
+editor/display_folded = true
+visible = false
+
+[node name="game_won_button" type="Button" parent="menus/game_won" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 320.0
+margin_top = 240.0
+margin_right = 680.0
+margin_bottom = 400.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Restart"
+flat = false
+align = 1
+
+[node name="Label" type="Label" parent="menus/game_won" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 310.0
+margin_top = 90.0
+margin_right = 680.0
+margin_bottom = 210.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "you won
+THE GAME"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
 [connection signal="pressed" from="menus/opening/new_game_button" to="manager" method="_on_new_game_button_pressed"]
 
 [connection signal="pressed" from="menus/pause_menu/unpause_button" to="manager" method="_on_unpause_button_pressed"]
 
 [connection signal="pressed" from="menus/game_over/game_over_button" to="manager" method="_on_game_over_button_pressed"]
+
+[connection signal="pressed" from="menus/game_won/game_won_button" to="manager" method="_on_game_won_button_pressed"]
 
 
