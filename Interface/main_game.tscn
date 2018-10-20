@@ -95,8 +95,6 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="opening" type="Node2D" parent="menus" index="0"]
 
-editor/display_folded = true
-
 [node name="new_game_button" type="Button" parent="menus/opening" index="0"]
 
 anchor_left = 0.0

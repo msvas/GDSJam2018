@@ -13,7 +13,7 @@ var timer = null
 var skeleton = null
 
 func _ready():
-	burnability = 2
+	burnability = 5
 	
 	randomize()
 	if _navigation and has_node(_navigation):

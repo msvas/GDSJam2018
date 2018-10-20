@@ -11,7 +11,7 @@ vertices = PoolVector2Array( 710.059, 343.837, 1005.94, 18.4862, 1003.49, 620.07
 polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 1, 0, 5 ), PoolIntArray( 3, 2, 6, 7, 8 ), PoolIntArray( 4, 5, 8, 7, 9 ), PoolIntArray( 10, 4, 9, 11 ), PoolIntArray( 2, 10, 11, 6 ) ]
 outlines = [ PoolVector2Array( 20.0698, 19.714, 18.842, 617.622, 1003.49, 620.078, 1005.94, 18.4862 ), PoolVector2Array( 203.003, 470.294, 198.092, 498.532, 254.568, 505.898, 255.795, 473.977 ), PoolVector2Array( 638.85, 343.837, 653.583, 379.441, 696.553, 378.213, 710.059, 343.837 ) ]
 
-[node name="Node2D" type="Node2D" index="0"]
+[node name="Node2D" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="." index="0"]
 

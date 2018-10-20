@@ -9,9 +9,9 @@ script/source = "extends \"res://Objects/base_object/base_flammable.gd\"
 
 func _ready():
 	flamability = 10
-	burnability = 2
+	burnability = 3
 
-func ignite_reaction():
+func extinguish_reaction():
 	for body in flame_area_node.get_overlapping_bodies():
 		if body.get(\"is_burning\") == false:
 			body.ignite()

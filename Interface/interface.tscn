@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Characters/Ifrit/Ifrit.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/box/box.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Objects/paper/paper.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Objects/oil barrel/oil barrel.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Objects/human/human.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Objects/car/car.tscn" type="PackedScene" id=10]
 
 [sub_resource type="GDScript" id=1]
 
@@ -17,7 +18,7 @@ script/source = "extends Node2D
 onready var window_manager = $\"../manager\"
 onready var ifrit = $\"units/Ifrit\"
 
-var humans_to_kill = 1
+var humans_to_kill = 3
 var humans_killed = 0
 var REFRESH_RATE = 0.1
 
@@ -165,6 +166,22 @@ position = Vector2( 690, 180 )
 
 position = Vector2( 360, 160 )
 
+[node name="object10" parent="units" index="10" instance=ExtResource( 9 )]
+
+position = Vector2( 380, 340 )
+
+[node name="object12" parent="units" index="11" instance=ExtResource( 10 )]
+
+position = Vector2( 120, 260 )
+
+[node name="object11" parent="units" index="12" instance=ExtResource( 9 )]
+
+position = Vector2( 260, 220 )
+
 [connection signal="dead" from="units/object9" to="." method="human_died"]
+
+[connection signal="dead" from="units/object10" to="." method="human_died"]
+
+[connection signal="dead" from="units/object11" to="." method="human_died"]
 
 
