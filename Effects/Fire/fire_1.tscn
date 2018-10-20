@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://art/fire1.png" type="Texture" id=1]
+[ext_resource path="res://art/fire_3.png" type="Texture" id=2]
+[ext_resource path="res://Effects/LightTexture.png" type="Texture" id=3]
 
 [sub_resource type="Animation" id=1]
 
@@ -72,7 +74,7 @@ anim_offset_random = 0.0
 anim_loop = true
 _sections_unfolded = [ "Color" ]
 
-[node name="fire" type="Sprite"]
+[node name="fire" type="Sprite" index="0"]
 
 texture = ExtResource( 1 )
 hframes = 3
@@ -106,10 +108,35 @@ visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = false
 draw_order = 0
 process_material = SubResource( 4 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 normal_map = null
-h_frames = 3
+h_frames = 1
 v_frames = 1
-_sections_unfolded = [ "Process Material" ]
+
+[node name="Light2D" type="Light2D" parent="." index="2"]
+
+scale = Vector2( 2, 2 )
+enabled = true
+editor_only = false
+texture = ExtResource( 3 )
+offset = Vector2( 0, 0 )
+texture_scale = 1.0
+color = Color( 0.921875, 0.770827, 0.594177, 1 )
+energy = 1.0
+mode = 0
+range_height = 0.0
+range_z_min = -1024
+range_z_max = 1024
+range_layer_min = 0
+range_layer_max = 0
+range_item_cull_mask = 1
+shadow_enabled = false
+shadow_color = Color( 0, 0, 0, 0 )
+shadow_buffer_size = 2048
+shadow_gradient_length = 0.0
+shadow_filter = 0
+shadow_filter_smooth = 0.0
+shadow_item_cull_mask = 1
+_sections_unfolded = [ "Transform" ]
 
 
