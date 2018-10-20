@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Objects/base_object/base_flammable.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Effects/Fire/fire_1.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Effects/Fire/fire_2.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -46,8 +48,17 @@ frames = SubResource( 2 )
 animation = "default"
 _sections_unfolded = [ "Transform", "Visibility" ]
 
-[node name="flame area" type="Area2D" parent="." index="2"]
+[node name="fire sprites" type="Node2D" parent="." index="2"]
 
+visible = false
+
+[node name="fire" parent="fire sprites" index="0" instance=ExtResource( 3 )]
+
+[node name="fire2" parent="fire sprites" index="1" instance=ExtResource( 4 )]
+
+[node name="flame area" type="Area2D" parent="." index="3"]
+
+editor/display_folded = true
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
