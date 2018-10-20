@@ -3,7 +3,6 @@ extends KinematicBody2D
 #CHILDS FROM NODE
 onready var flame_area_node = get_node("flame area")
 onready var sprite_node = get_node("sprite")
-onready var fire_childs_node = get_node("fire sprites")
 
 #OBJECT CUSTOMIZABLE VARIABLES
 export var flamability = 3  #Time in seconds till object ignites
@@ -12,9 +11,7 @@ export var REFRESH_RATE = 0.1 #Seconds till object apply heat over near objects
 var is_burning = false
 
 #GRAPHICAL EFFECTS VARIABLES
-var max_red  = 10
-var min_mod = 10
-
+var max_red  = 1
 var mod_color_subtraction = [0.1,0.1,0.1]
 var mod_color = [1,1,1]
 
@@ -31,12 +28,7 @@ func ignite():
 	if has_method("ignite_reaction"):
 		ignite_reaction()
 	
-	#Fire effects
-	fire_childs_node.visible = true
-	
-	#Calculate variability to complete darkness
-	for i in range(0,2):
-		mod_color_subtraction[i] = mod_color[i]*REFRESH_RATE/burnability
+	#ADD BURNING EFFECTS
 
 func burn(time_rate):
 	#Modulate sprite till max red
@@ -63,7 +55,6 @@ func heat_near_bodies():
 	#TODO BETTER - CHANGE MODULATE TO BLACK
 	for i in range(0,2):
 		mod_color[i] -= mod_color_subtraction[i]
-	
 	sprite_node.modulate = Color(mod_color[0],mod_color[1],mod_color[2])
 
 	for body in flame_area_node.get_overlapping_bodies():

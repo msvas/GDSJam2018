@@ -1,11 +1,65 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://art/fire2.png" type="Texture" id=1]
+[ext_resource path="res://Effects/Fire/fire_particle_material.tres" type="Material" id=2]
+
+[sub_resource type="Animation" id=1]
+
+resource_name = "burn"
+length = 0.3
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 1 ]
+}
 
 [node name="fire" type="Sprite" index="0"]
 
 texture = ExtResource( 1 )
 hframes = 3
 _sections_unfolded = [ "Animation", "Transform" ]
+
+[node name="anim" type="AnimationPlayer" parent="." index="0"]
+
+root_node = NodePath("..")
+autoplay = "burn"
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 0.8
+anims/burn = SubResource( 1 )
+blend_times = [  ]
+_sections_unfolded = [ "Playback Options" ]
+
+[node name="Particles2D" type="Particles2D" parent="." index="1"]
+
+show_behind_parent = true
+emitting = true
+amount = 8
+lifetime = 2.0
+one_shot = false
+preprocess = 0.0
+speed_scale = 1.0
+explosiveness = 0.0
+randomness = 0.5
+fixed_fps = 0
+fract_delta = true
+visibility_rect = Rect2( -100, -100, 200, 200 )
+local_coords = false
+draw_order = 0
+process_material = ExtResource( 2 )
+texture = ExtResource( 1 )
+normal_map = null
+h_frames = 3
+v_frames = 1
+_sections_unfolded = [ "Process Material" ]
 
 
