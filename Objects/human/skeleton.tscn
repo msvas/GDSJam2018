@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://art/dead.png" type="Texture" id=1]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends Sprite
+
+var timer
+
+func _ready():
+	timer = countdown_timer(0.2,\"next_frame\",false)
+
+func next_frame():
+	if frame < 2:
+		frame += 1
+	else:
+		timer.stop()
+		timer.queue_free()
+
+#SUPPPORT METHODS
+func countdown_timer(time, function, oneshot = true):
+	#Instance timer
+	var timer = Timer.new()
+	add_child(timer)
+
+	#Configure timer
+	timer.one_shot = oneshot
+	timer.set_wait_time(time)
+	timer.connect(\"timeout\",self,function)
+
+	#Initialize timer
+	timer.start()
+	return timer"
+
+[node name="Sprite" type="Sprite"]
+
+position = Vector2( 0, -25.5602 )
+texture = ExtResource( 1 )
+hframes = 3
+script = SubResource( 1 )
+_sections_unfolded = [ "Animation" ]
+
+

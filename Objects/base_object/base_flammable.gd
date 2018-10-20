@@ -51,14 +51,16 @@ func extinguish():
 	burn_bodies_timer.stop()
 	burn_bodies_timer.queue_free()
 	
+	var draw_ashes = true
 	#ADD BURNOUT EFFECTS
 	if has_method("extinguish_reaction"):
-		extinguish_reaction()
+		draw_ashes = extinguish_reaction()
 	
-	var sprite = Sprite.new()
-	get_node("..").add_child(sprite)
-	sprite.texture = load("res://art/ashes.png")
-	sprite.position = position
+	if draw_ashes:
+		var sprite = Sprite.new()
+		get_node("..").add_child(sprite)
+		sprite.texture = load("res://art/ashes.png")
+		sprite.position = position
 	
 	queue_free()
 

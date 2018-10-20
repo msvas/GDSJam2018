@@ -64,7 +64,7 @@ func countdown_timer(time, function, oneshot = true):
 	timer.start()
 	return timer"
 
-[node name="match_scene" type="Node2D" index="0"]
+[node name="match_scene" type="Node2D"]
 
 script = SubResource( 1 )
 

@@ -9,7 +9,12 @@ export var threshold = 5
 var navigation
 var path = PoolVector2Array()
 
+var timer = null
+var skeleton = null
+
 func _ready():
+	burnability = 2
+	
 	randomize()
 	if _navigation and has_node(_navigation):
 		navigation = get_node(_navigation)
@@ -56,3 +61,10 @@ func ignite_reaction():
 
 func extinguish_reaction():
 	emit_signal("dead")
+	
+	skeleton = load("res://Objects/human/skeleton.tscn").instance()
+	skeleton.position = position
+	skeleton.position.y -= 20
+	get_node("..").add_child(skeleton)
+	
+	return false
