@@ -9,6 +9,8 @@ onready var fire_sprites = get_node("fire sprites")
 export var flamability = 3  #Time in seconds till object ignites
 export var burnability = 10  #Time in seconds till object extinguish
 export var REFRESH_RATE = 0.1 #Seconds till object apply heat over near objects
+export var start_burning = false 
+export var burn_humans = true 
 var is_burning = false
 
 #GRAPHICAL EFFECTS VARIABLES
@@ -19,7 +21,8 @@ var mod_color = [1,1,1]
 var burn_bodies_timer = null
 
 func _ready():
-	pass
+	if start_burning:
+		ignite()
 
 func ignite():
 	get_node("fire sound").play(0)
@@ -75,7 +78,7 @@ func heat_near_bodies():
 	
 	for body in flame_area_node.get_overlapping_bodies():
 		#slowly ignites flammable objects
-		if body.get("is_burning") == false:
+		if body.get("is_burning") == false and burn_humans:
 			body.burn(REFRESH_RATE)
 		
 		#refuels ifrit
