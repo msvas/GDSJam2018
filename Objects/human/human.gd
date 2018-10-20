@@ -13,6 +13,7 @@ var timer = null
 var skeleton = null
 
 func _ready():
+	flamability = 2
 	burnability = 5
 	
 	randomize()

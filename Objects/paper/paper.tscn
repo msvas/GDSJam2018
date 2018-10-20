@@ -13,7 +13,7 @@ script/source = "extends \"res://Objects/base_object/base_flammable.gd\"
 
 func _ready():
 	flamability = 1
-	burnability = 1
+	burnability = 2
 "
 
 [sub_resource type="RectangleShape2D" id=2]

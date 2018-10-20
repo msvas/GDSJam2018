@@ -17,7 +17,7 @@ animations = [ {
 flags = 4
 load_path = "res://.import/fire2.png-51b04189171611a2db958173f418ad20.stex"
 
-[node name="object" index="0" instance=ExtResource( 1 )]
+[node name="object" instance=ExtResource( 1 )]
 
 [node name="sprite" parent="." index="1"]
 
