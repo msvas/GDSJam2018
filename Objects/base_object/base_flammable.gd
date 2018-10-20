@@ -3,6 +3,7 @@ extends KinematicBody2D
 #CHILDS FROM NODE
 onready var flame_area_node = get_node("flame area")
 onready var sprite_node = get_node("sprite")
+onready var fire_sprites = get_node("fire sprites")
 
 #OBJECT CUSTOMIZABLE VARIABLES
 export var flamability = 3  #Time in seconds till object ignites
@@ -29,6 +30,7 @@ func ignite():
 		ignite_reaction()
 	
 	#ADD BURNING EFFECTS
+	fire_sprites.visible = true
 
 func burn(time_rate):
 	#Modulate sprite till max red
