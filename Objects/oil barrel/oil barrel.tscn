@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Objects/base_object/base_flammable.tscn" type="PackedScene" id=1]
+[ext_resource path="res://art/oil_barrel.png" type="Texture" id=2]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends \"res://Objects/base_object/base_flammable.gd\"
+
+func _ready():
+	flamability = 1
+	burnability = 5
+
+func extinguish_reaction():
+	for body in flame_area_node.get_overlapping_bodies():
+		if body.get(\"is_burning\") == false:
+			body.ignite()"
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="StreamTexture" id=3]
+
+flags = 4
+load_path = "res://.import/fire2.png-51b04189171611a2db958173f418ad20.stex"
+
+[node name="object" index="0" instance=ExtResource( 1 )]
+
+script = SubResource( 1 )
+
+[node name="sprite" parent="." index="1"]
+
+position = Vector2( 0, -23 )
+frames = SubResource( 2 )
+
+[node name="fire" parent="fire sprites" index="0"]
+
+position = Vector2( 3.08072, -25.3969 )
+
+[node name="fire2" parent="fire sprites" index="1"]
+
+position = Vector2( 4.95995, -38.7578 )
+scale = Vector2( 1.46147, 1.40064 )
+z_index = -1
+texture = SubResource( 3 )
+_sections_unfolded = [ "Animation", "Transform", "Z Index" ]
+
+

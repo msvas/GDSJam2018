@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Objects/base_object/base_flammable.tscn" type="PackedScene" id=1]
+[ext_resource path="res://art/paper_1.png" type="Texture" id=2]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends \"res://Objects/base_object/base_flammable.gd\"
+
+# class member variables go here, for example:
+# var a = 2
+# var b = \"textvar\"
+
+func _ready():
+	flamability = 1
+	burnability = 1
+"
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 3.70834, 3.40212 )
+
+[sub_resource type="SpriteFrames" id=3]
+
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="object" index="0" instance=ExtResource( 1 )]
+
+script = SubResource( 1 )
+
+[node name="object body" parent="." index="0"]
+
+shape = SubResource( 2 )
+
+[node name="sprite" parent="." index="1"]
+
+position = Vector2( 0.33289, 0.154781 )
+scale = Vector2( 0.370329, 0.370329 )
+frames = SubResource( 3 )
+
+[node name="fire" parent="fire sprites" index="0"]
+
+position = Vector2( 2.36945, -5.17717 )
+scale = Vector2( 0.763086, 0.694954 )
+
+[node name="fire2" parent="fire sprites" index="1"]
+
+visible = false
+
+[node name="flame area" parent="." index="3"]
+
+visible = false
+
+[node name="area shape" parent="flame area" index="0"]
+
+position = Vector2( 15.5477, -18.4464 )
+
+

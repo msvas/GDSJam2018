@@ -49,8 +49,11 @@ func extinguish():
 	visible = false
 	burn_bodies_timer.stop()
 	burn_bodies_timer.queue_free()
-
+	
 	#ADD BURNOUT EFFECTS
+	if has_method("extinguish_reaction"):
+		extinguish_reaction()
+	
 	queue_free()
 
 func heat_near_bodies():
