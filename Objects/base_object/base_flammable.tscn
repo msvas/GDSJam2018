@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 10, 10 )
+extents = Vector2( 9.1186, 2.90739 )
 
 [sub_resource type="SpriteFrames" id=2]
 
@@ -22,15 +22,14 @@ animations = [ {
 custom_solver_bias = 0.0
 radius = 204.287
 
-[node name="object" type="KinematicBody2D"]
+[node name="object" type="KinematicBody2D" index="0"]
 
-position = Vector2( 372.09, 369.764 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 3
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
-_sections_unfolded = [ "Collision" ]
+_sections_unfolded = [ "Collision", "Transform" ]
 flamability = 3
 burnability = 4
 REFRESH_RATE = 0.1

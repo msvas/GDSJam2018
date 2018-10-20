@@ -11,7 +11,9 @@ export var REFRESH_RATE = 0.1 #Seconds till object apply heat over near objects
 var is_burning = false
 
 #GRAPHICAL EFFECTS VARIABLES
-var max_red  = 1
+var max_red  = 10
+var min_mod = 10
+
 var mod_color_subtraction = [0.1,0.1,0.1]
 var mod_color = [1,1,1]
 
@@ -29,6 +31,8 @@ func ignite():
 		ignite_reaction()
 	
 	#ADD BURNING EFFECTS
+	for i in range(0,2):
+		mod_color_subtraction[i] = mod_color[i]*REFRESH_RATE/burnability
 
 func burn(time_rate):
 	#Modulate sprite till max red
@@ -55,6 +59,7 @@ func heat_near_bodies():
 	#TODO BETTER - CHANGE MODULATE TO BLACK
 	for i in range(0,2):
 		mod_color[i] -= mod_color_subtraction[i]
+	
 	sprite_node.modulate = Color(mod_color[0],mod_color[1],mod_color[2])
 
 	for body in flame_area_node.get_overlapping_bodies():

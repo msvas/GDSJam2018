@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Characters/Ifrit/Ifrit.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Objects/base_object/base_flammable.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Objects/box/box.tscn" type="PackedScene" id=2]
 
 [sub_resource type="GDScript" id=1]
 
@@ -94,5 +94,19 @@ sort_enabled = true
 position = Vector2( 512.216, 302.274 )
 
 [node name="object" parent="units" index="1" instance=ExtResource( 2 )]
+
+position = Vector2( 370, 350 )
+
+[node name="object2" parent="units" index="2" instance=ExtResource( 2 )]
+
+position = Vector2( 500, 420 )
+
+[node name="object3" parent="units" index="3" instance=ExtResource( 2 )]
+
+position = Vector2( 650, 400 )
+
+[node name="object4" parent="units" index="4" instance=ExtResource( 2 )]
+
+position = Vector2( 540, 220 )
 
 
