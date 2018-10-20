@@ -35,7 +35,8 @@ func ignite():
 func burn(time_rate):
 	#Modulate sprite till max red
 	mod_color[0] += max_red * REFRESH_RATE / flamability
-	sprite_node.modulate = Color(mod_color[0],mod_color[1],mod_color[2])
+	#Remove comment below only when the calculation error is found
+	#sprite_node.modulate = Color(mod_color[0],mod_color[1],mod_color[2])
 	
 	#Slowly heats the object
 	flamability -= time_rate
@@ -60,8 +61,9 @@ func heat_near_bodies():
 	#TODO BETTER - CHANGE MODULATE TO BLACK
 	for i in range(0,2):
 		mod_color[i] -= mod_color_subtraction[i]
-	sprite_node.modulate = Color(mod_color[0],mod_color[1],mod_color[2])
-
+	#Remove comment below only when the calculation error is found
+	#sprite_node.modulate = Color(mod_color[0],mod_color[1],mod_color[2])
+	
 	for body in flame_area_node.get_overlapping_bodies():
 		#slowly ignites flammable objects
 		if body.get("is_burning") == false:
