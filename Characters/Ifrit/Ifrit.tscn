@@ -94,7 +94,7 @@ script = ExtResource( 6 )
 movement_speed = 200.0
 fuel = 100
 max_fuel = 100
-fuel_consumption = 5
+fuel_consumption = 1.0
 shoot_fuel_cost = 10
 fire_replenisher = 0.5
 
