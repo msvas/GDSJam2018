@@ -9,7 +9,7 @@ vertices = PoolVector2Array( 664.673, 195.197, 730.047, 286.055, 613.704, 315.97
 polygons = [ PoolIntArray( 0, 1, 2, 3, 4 ), PoolIntArray( 5, 6, 7, 8 ), PoolIntArray( 0, 9, 10, 6, 1 ), PoolIntArray( 3, 2, 8, 7, 11 ), PoolIntArray( 12, 10, 9 ), PoolIntArray( 12, 9, 4 ), PoolIntArray( 6, 5, 1 ), PoolIntArray( 12, 4, 3, 13, 14 ), PoolIntArray( 7, 14, 13, 11 ), PoolIntArray( 3, 11, 15 ) ]
 outlines = [ PoolVector2Array( 15.3657, 10.1551, 15.3657, 563.064, 1005.95, 590.765, 1009.27, 5.72301, 186.003, 38.964 ), PoolVector2Array( 145.006, 161.956, 140.573, 431.208, 214.812, 297.136, 320.075, 283.839 ), PoolVector2Array( 613.704, 315.972, 564.95, 466.665, 733.371, 455.585, 730.047, 286.055 ), PoolVector2Array( 470.767, 145.335, 664.673, 195.197, 594.867, 45.6122 ) ]
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" index="0"]
 
 _sections_unfolded = [ "Transform" ]
 
