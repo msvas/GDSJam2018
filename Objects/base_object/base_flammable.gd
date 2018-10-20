@@ -55,11 +55,6 @@ func extinguish():
 	if has_method("extinguish_reaction"):
 		extinguish_reaction()
 	
-	var sprite = Sprite.new()
-	sprite.texture = load("res://art/ashes.png")
-	sprite.position = position
-	get_node("..").add_child(sprite)
-	
 	queue_free()
 
 func heat_near_bodies():

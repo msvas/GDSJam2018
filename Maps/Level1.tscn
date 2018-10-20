@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Maps/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Characters/Ifrit/Ifrit.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Objects/human/human.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Objects/human/human2.tscn" type="PackedScene" id=4]
 
 [sub_resource type="NavigationPolygon" id=1]
 
@@ -46,6 +47,11 @@ position = Vector2( 511.967, 330.262 )
 [node name="object" parent="." index="3" instance=ExtResource( 3 )]
 
 position = Vector2( 305.707, 203.805 )
+_navigation = NodePath("../Navigation2D")
+
+[node name="object2" parent="." index="4" instance=ExtResource( 4 )]
+
+position = Vector2( 815.218, 238.181 )
 _navigation = NodePath("../Navigation2D")
 
 

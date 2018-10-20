@@ -156,7 +156,6 @@ align = 1
 
 [node name="game_over" type="Node2D" parent="menus" index="2"]
 
-editor/display_folded = true
 visible = false
 
 [node name="game_over_button" type="Button" parent="menus/game_over" index="0"]
