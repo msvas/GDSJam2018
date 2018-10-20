@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Characters/Character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Characters/Ifrit/ifrit.gd" type="Script" id=2]
@@ -7,8 +7,9 @@
 [ext_resource path="res://Characters/actions/refuel.gd" type="Script" id=5]
 [ext_resource path="res://Characters/actions/shoot.gd" type="Script" id=6]
 [ext_resource path="res://Characters/Ifrit/Fireball.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Characters/Ifrit/input.gd" type="Script" id=8]
-[ext_resource path="res://Camera.gd" type="Script" id=9]
+[ext_resource path="res://Characters/actions/fire_sprint.gd" type="Script" id=8]
+[ext_resource path="res://Characters/Ifrit/input.gd" type="Script" id=9]
+[ext_resource path="res://Camera.gd" type="Script" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -27,6 +28,7 @@ shape = SubResource( 1 )
 [node name="sprite" type="Sprite" parent="." index="1"]
 
 texture = ExtResource( 3 )
+_sections_unfolded = [ "Material" ]
 
 [node name="attributes" parent="." index="2"]
 
@@ -53,9 +55,16 @@ _character = NodePath("../..")
 _attributes = NodePath("../../attributes")
 projectile_scene = ExtResource( 7 )
 
-[node name="input" type="Node" parent="." index="4"]
+[node name="fire_sprint" type="Node" parent="actions" index="3"]
 
 script = ExtResource( 8 )
+enabled = true
+_character = NodePath("../..")
+_attributes = NodePath("../../attributes")
+
+[node name="input" type="Node" parent="." index="4"]
+
+script = ExtResource( 9 )
 _ifrit = NodePath("..")
 
 [node name="Camera" type="Camera2D" parent="." index="5"]
@@ -82,7 +91,7 @@ drag_margin_bottom = 0.2
 editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
-script = ExtResource( 9 )
+script = ExtResource( 10 )
 
 [node name="tween" type="Tween" parent="Camera" index="0"]
 

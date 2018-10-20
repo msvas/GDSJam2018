@@ -7,3 +7,6 @@ func _execute():
 		attributes.fuel = attributes.max_fuel
 	else:
 		attributes.fuel += refuel_value
+	
+	#deactivate line below to remove fire_sprint
+	get_node("../fire_sprint")._execute()
