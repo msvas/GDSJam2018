@@ -35,7 +35,7 @@ func decrease_fuel(delta):
 
 func update_HUD():
 	$"FireMeter".value = ifrit.get_attribute("fuel")
-	$"humans_killed".text = str(humans_killed) + " / " + str(humans_to_kill)
+	$"humans_killed".text = str(humans_killed) + "/" + str(humans_to_kill)
 
 func human_died():
 	humans_killed += 1
