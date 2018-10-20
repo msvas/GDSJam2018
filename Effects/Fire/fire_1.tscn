@@ -115,14 +115,13 @@ v_frames = 1
 
 [node name="Light2D" type="Light2D" parent="." index="2"]
 
-scale = Vector2( 2, 2 )
 enabled = true
 editor_only = false
 texture = ExtResource( 3 )
 offset = Vector2( 0, 0 )
 texture_scale = 1.0
 color = Color( 0.921875, 0.770827, 0.594177, 1 )
-energy = 1.0
+energy = 0.5
 mode = 0
 range_height = 0.0
 range_z_min = -1024
@@ -137,6 +136,5 @@ shadow_gradient_length = 0.0
 shadow_filter = 0
 shadow_filter_smooth = 0.0
 shadow_item_cull_mask = 1
-_sections_unfolded = [ "Transform" ]
 
 

@@ -1,19 +1,55 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Objects/base_object/base_flammable.tscn" type="PackedScene" id=1]
+[ext_resource path="res://art/oil_puddle.png" type="Texture" id=2]
 
 [sub_resource type="GDScript" id=1]
 
 script/source = "extends \"res://Objects/base_object/base_flammable.gd\"
 
 func _ready():
-	flamability = 0.1
-	burnability = 2
+	flamability = 0.5
+	burnability = 5
 
 "
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [node name="object" instance=ExtResource( 1 )]
 
 script = SubResource( 1 )
+_sections_unfolded = [ "Collision", "Transform", "collision" ]
+
+[node name="object body" parent="." index="0"]
+
+position = Vector2( -3.19061, -4.7579 )
+
+[node name="sprite" parent="." index="1"]
+
+frames = SubResource( 2 )
+
+[node name="fire sprites" parent="." index="2"]
+
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="fire" parent="fire sprites" index="0"]
+
+visible = false
+
+[node name="fire2" parent="fire sprites" index="1"]
+
+position = Vector2( 1.72935, -29.7706 )
+scale = Vector2( 0.88601, 0.943226 )
+
+[node name="flame area" parent="." index="3"]
+
+visible = false
 
 

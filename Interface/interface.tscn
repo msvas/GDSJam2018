@@ -1,7 +1,15 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Characters/Ifrit/Ifrit.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Objects/base_object/base_flammable.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Objects/box/box.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Objects/boxes/boxes.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Objects/oil/oil.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Objects/extinguisher/extinguisher.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Objects/trash/trash.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Objects/paper/paper.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Objects/oil barrel/oil barrel.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Objects/human/human.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Objects/car/car.tscn" type="PackedScene" id=10]
 
 [sub_resource type="GDScript" id=1]
 
@@ -10,6 +18,8 @@ script/source = "extends Node2D
 onready var window_manager = $\"../manager\"
 onready var ifrit = $\"units/Ifrit\"
 
+var humans_to_kill = 3
+var humans_killed = 0
 var REFRESH_RATE = 0.1
 
 func _ready():
@@ -30,8 +40,15 @@ func fuel_decreaser():
 	if actual_fuel <= 0:
 		window_manager.game_over()
 
+func human_died():
+	humans_killed += 1
+	
+	if humans_killed == humans_to_kill:
+		window_manager.game_won()
+
 func HUD_refresher():
 	$\"HUD/fuel meter\".value = ifrit.get_attribute(\"fuel\")
+	$\"HUD/humans_killed\".text = \"Humans killed = \" + str(humans_killed)
 
 #SUPPPORT METHODS
 func countdown_timer(time, function, oneshot = true):
@@ -85,6 +102,26 @@ exp_edit = false
 rounded = false
 percent_visible = true
 
+[node name="humans_killed" type="Label" parent="HUD" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 120.0
+margin_bottom = 70.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
 [node name="units" type="YSort" parent="." index="1"]
 
 sort_enabled = true
@@ -94,5 +131,57 @@ sort_enabled = true
 position = Vector2( 512.216, 302.274 )
 
 [node name="object" parent="units" index="1" instance=ExtResource( 2 )]
+
+position = Vector2( 280, 350 )
+
+[node name="object5" parent="units" index="2" instance=ExtResource( 2 )]
+
+position = Vector2( 390, 450 )
+
+[node name="object2" parent="units" index="3" instance=ExtResource( 3 )]
+
+position = Vector2( 700, 390 )
+
+[node name="object3" parent="units" index="4" instance=ExtResource( 4 )]
+
+position = Vector2( 550, 490 )
+
+[node name="object7" parent="units" index="5" instance=ExtResource( 5 )]
+
+position = Vector2( 250, 400 )
+
+[node name="object4" parent="units" index="6" instance=ExtResource( 6 )]
+
+position = Vector2( 870, 240 )
+
+[node name="object6" parent="units" index="7" instance=ExtResource( 7 )]
+
+position = Vector2( 810, 170 )
+
+[node name="object8" parent="units" index="8" instance=ExtResource( 8 )]
+
+position = Vector2( 690, 180 )
+
+[node name="object9" parent="units" index="9" instance=ExtResource( 9 )]
+
+position = Vector2( 360, 160 )
+
+[node name="object10" parent="units" index="10" instance=ExtResource( 9 )]
+
+position = Vector2( 380, 340 )
+
+[node name="object12" parent="units" index="11" instance=ExtResource( 10 )]
+
+position = Vector2( 120, 260 )
+
+[node name="object11" parent="units" index="12" instance=ExtResource( 9 )]
+
+position = Vector2( 260, 220 )
+
+[connection signal="dead" from="units/object9" to="." method="human_died"]
+
+[connection signal="dead" from="units/object10" to="." method="human_died"]
+
+[connection signal="dead" from="units/object11" to="." method="human_died"]
 
 

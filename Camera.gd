@@ -3,6 +3,7 @@ extends Camera2D
 var shake_offset = Vector2()
 
 func screenshake(duration = 1, amount = 1):
+	get_node("AudioStreamPlayer2D").play(0)
 	var timer = 0.0
 	
 	$tween.interpolate_property(

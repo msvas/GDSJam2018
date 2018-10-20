@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Objects/base_object/base_flammable.tscn" type="PackedScene" id=1]
+[ext_resource path="res://art/box_1.png" type="Texture" id=2]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=2]
+
+custom_solver_bias = 0.0
+radius = 96.7782
+
+[node name="object" index="0" instance=ExtResource( 1 )]
+
+start_burning = false
+burn_humans = true
+
+start_burning = false
+burn_humans = true
+
+[node name="object body" parent="." index="0"]
+
+position = Vector2( 1.00977, -1.17968 )
+
+[node name="sprite" parent="." index="1"]
+
+position = Vector2( 0, -12 )
+frames = SubResource( 1 )
+
+[node name="fire sprites" parent="." index="2"]
+
+_sections_unfolded = [ "Z Index" ]
+
+[node name="fire" parent="fire sprites" index="0"]
+
+position = Vector2( 16, -45 )
+_sections_unfolded = [ "Animation", "Material", "Region", "Transform", "Visibility" ]
+
+[node name="fire2" parent="fire sprites" index="1"]
+
+position = Vector2( -8.67316, -17.9611 )
+scale = Vector2( 0.880393, 0.892128 )
+_sections_unfolded = [ "Animation", "Transform", "Visibility" ]
+
+[node name="flame area" parent="." index="3"]
+
+visible = false
+
+[node name="area shape" parent="flame area" index="0"]
+
+position = Vector2( 0, -17.2489 )
+shape = SubResource( 2 )
+
+
