@@ -1,15 +1,17 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Characters/Character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Characters/Ifrit/ifrit.gd" type="Script" id=2]
 [ext_resource path="res://art/ifrit.png" type="Texture" id=3]
-[ext_resource path="res://Characters/Ifrit/attributes.gd" type="Script" id=4]
-[ext_resource path="res://Characters/actions/refuel.gd" type="Script" id=5]
-[ext_resource path="res://Characters/actions/shoot.gd" type="Script" id=6]
-[ext_resource path="res://Characters/Ifrit/Fireball.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Characters/actions/fire_sprint.gd" type="Script" id=8]
-[ext_resource path="res://Characters/Ifrit/input.gd" type="Script" id=9]
-[ext_resource path="res://Camera.gd" type="Script" id=10]
+[ext_resource path="res://Effects/Fire/fire_particle_material.tres" type="Material" id=4]
+[ext_resource path="res://art/fire1.png" type="Texture" id=5]
+[ext_resource path="res://Characters/Ifrit/attributes.gd" type="Script" id=6]
+[ext_resource path="res://Characters/actions/refuel.gd" type="Script" id=7]
+[ext_resource path="res://Characters/actions/shoot.gd" type="Script" id=8]
+[ext_resource path="res://Characters/Ifrit/Fireball.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Characters/actions/fire_sprint.gd" type="Script" id=10]
+[ext_resource path="res://Characters/Ifrit/input.gd" type="Script" id=11]
+[ext_resource path="res://Camera.gd" type="Script" id=12]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -19,9 +21,9 @@ radius = 12.2376
 [sub_resource type="Animation" id=2]
 
 resource_name = "walk"
-length = 0.5
+length = 0.4
 loop = true
-step = 0.05
+step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("sprite:frame")
 tracks/0/interp = 1
@@ -29,10 +31,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 0, 1, 1, 2, 3, 3, 2, 2, 1, 1 ]
+"values": [ 0, 1, 2, 3 ]
 }
 
 [node name="Ifrit" instance=ExtResource( 1 )]
@@ -50,7 +52,7 @@ shape = SubResource( 1 )
 position = Vector2( 1, -30 )
 texture = ExtResource( 3 )
 hframes = 4
-frame = 1
+frame = 2
 _sections_unfolded = [ "Animation", "Material", "Transform" ]
 
 [node name="anim" type="AnimationPlayer" parent="." index="2"]
@@ -63,9 +65,31 @@ playback_speed = 1.0
 anims/walk = SubResource( 2 )
 blend_times = [  ]
 
-[node name="attributes" parent="." index="3"]
+[node name="particles" type="Particles2D" parent="." index="3"]
 
-script = ExtResource( 4 )
+position = Vector2( -13.1722, -8.38232 )
+emitting = true
+amount = 8
+lifetime = 1.0
+one_shot = false
+preprocess = 0.0
+speed_scale = 1.0
+explosiveness = 0.0
+randomness = 0.5
+fixed_fps = 0
+fract_delta = true
+visibility_rect = Rect2( -100, -100, 200, 200 )
+local_coords = false
+draw_order = 0
+process_material = ExtResource( 4 )
+texture = ExtResource( 5 )
+normal_map = null
+h_frames = 3
+v_frames = 1
+
+[node name="attributes" parent="." index="4"]
+
+script = ExtResource( 6 )
 movement_speed = 200.0
 fuel = 100
 max_fuel = 100
@@ -73,38 +97,38 @@ fuel_consumption = 10
 shoot_fuel_cost = 10
 fire_replenisher = 0.5
 
-[node name="actions" parent="." index="4"]
+[node name="actions" parent="." index="5"]
 
 editor/display_folded = true
 
 [node name="refuel" type="Node" parent="actions" index="1"]
 
-script = ExtResource( 5 )
+script = ExtResource( 7 )
 enabled = true
 _character = NodePath("../..")
 _attributes = NodePath("../../attributes")
 
 [node name="shoot" type="Node" parent="actions" index="2"]
 
-script = ExtResource( 6 )
-enabled = true
-_character = NodePath("../..")
-_attributes = NodePath("../../attributes")
-projectile_scene = ExtResource( 7 )
-
-[node name="fire_sprint" type="Node" parent="actions" index="3"]
-
 script = ExtResource( 8 )
 enabled = true
 _character = NodePath("../..")
 _attributes = NodePath("../../attributes")
+projectile_scene = ExtResource( 9 )
 
-[node name="input" type="Node" parent="." index="5"]
+[node name="fire_sprint" type="Node" parent="actions" index="3"]
 
-script = ExtResource( 9 )
+script = ExtResource( 10 )
+enabled = true
+_character = NodePath("../..")
+_attributes = NodePath("../../attributes")
+
+[node name="input" type="Node" parent="." index="6"]
+
+script = ExtResource( 11 )
 _ifrit = NodePath("..")
 
-[node name="Camera" type="Camera2D" parent="." index="6"]
+[node name="Camera" type="Camera2D" parent="." index="7"]
 
 anchor_mode = 1
 rotating = false
@@ -128,7 +152,7 @@ drag_margin_bottom = 0.2
 editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
-script = ExtResource( 10 )
+script = ExtResource( 12 )
 
 [node name="tween" type="Tween" parent="Camera" index="0"]
 
