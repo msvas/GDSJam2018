@@ -53,8 +53,9 @@ func burn(time_rate):
 
 func extinguish():
 	visible = false
-	burn_bodies_timer.stop()
-	burn_bodies_timer.queue_free()
+	if burn_bodies_timer != null:
+		burn_bodies_timer.stop()
+		burn_bodies_timer.queue_free()
 	
 	var draw_ashes = true
 	#ADD BURNOUT EFFECTS

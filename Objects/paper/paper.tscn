@@ -33,6 +33,8 @@ animations = [ {
 [node name="object" instance=ExtResource( 1 )]
 
 script = SubResource( 1 )
+start_burning = false
+burn_humans = true
 
 [node name="object body" parent="." index="0"]
 
@@ -50,10 +52,6 @@ position = Vector2( 2.36945, -5.17717 )
 scale = Vector2( 0.763086, 0.694954 )
 
 [node name="fire2" parent="fire sprites" index="1"]
-
-visible = false
-
-[node name="flame area" parent="." index="3"]
 
 visible = false
 

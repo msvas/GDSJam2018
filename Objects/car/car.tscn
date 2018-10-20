@@ -17,7 +17,7 @@ func ignite_reaction():
 
 func extinguish_reaction():
 	for body in flame_area_node.get_overlapping_bodies():
-		if body.get(\"is_burning\") == false:
+		if body.has_method(\"ignite\") and body.get(\"is_burning\") == false:
 			body.ignite()
 	
 	get_node(\"../Ifrit/Camera\").screenshake(1,100)
@@ -45,6 +45,8 @@ radius = 598.437
 [node name="object" instance=ExtResource( 1 )]
 
 script = SubResource( 1 )
+start_burning = false
+burn_humans = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="0"]
 

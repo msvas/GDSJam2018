@@ -30,7 +30,7 @@ margin_left = 49.0
 margin_top = 10.0
 margin_right = -407.0
 margin_bottom = 74.0
-_sections_unfolded = [ "Rect" ]
+_sections_unfolded = [ "Rect", "Textures" ]
 
 [node name="humans_killed" type="Label" parent="." index="1"]
 

@@ -67,11 +67,13 @@ tracks/0/keys = {
 "values": [ 4, 5, 6, 7 ]
 }
 
-[node name="object" index="0" groups=[
+[node name="object" groups=[
 "human",
 ] instance=ExtResource( 1 )]
 
 script = ExtResource( 2 )
+start_burning = false
+burn_humans = true
 _navigation = null
 speed = 150
 threshold = 5
@@ -84,10 +86,6 @@ shape = SubResource( 1 )
 [node name="sprite" parent="." index="1"]
 
 visible = false
-
-[node name="fire sprites" parent="." index="2"]
-
-editor/display_folded = true
 
 [node name="fire" parent="fire sprites" index="0"]
 
