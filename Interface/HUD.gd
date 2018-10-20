@@ -41,4 +41,5 @@ func human_died():
 	humans_killed += 1
 	
 	if humans_killed == humans_to_kill:
+		yield(get_tree().create_timer(1), "timeout")
 		window_manager.game_won()
