@@ -77,7 +77,7 @@ func _on_game_won_button_pressed():
 	start_game()
 "
 
-[node name="game" type="Node" index="0"]
+[node name="game" type="Node"]
 
 [node name="manager" type="Node" parent="." index="0"]
 

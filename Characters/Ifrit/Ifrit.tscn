@@ -11,7 +11,7 @@
 [ext_resource path="res://Characters/Ifrit/input.gd" type="Script" id=9]
 [ext_resource path="res://Camera.gd" type="Script" id=10]
 
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
 radius = 12.2376
@@ -43,7 +43,7 @@ _sections_unfolded = [ "Transform" ]
 [node name="shape" type="CollisionShape2D" parent="." index="0"]
 
 position = Vector2( -1.7805, -0.606117 )
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="sprite" type="Sprite" parent="." index="1"]
 
@@ -72,6 +72,10 @@ max_fuel = 100
 fuel_consumption = 10
 shoot_fuel_cost = 10
 fire_replenisher = 0.5
+
+[node name="actions" parent="." index="4"]
+
+editor/display_folded = true
 
 [node name="refuel" type="Node" parent="actions" index="1"]
 
