@@ -64,7 +64,7 @@ func countdown_timer(time, function, oneshot = true):
 	timer.start()
 	return timer"
 
-[node name="match_scene" type="Node2D"]
+[node name="match_scene" type="Node2D" index="0"]
 
 script = SubResource( 1 )
 
@@ -164,5 +164,7 @@ position = Vector2( 690, 180 )
 [node name="object9" parent="units" index="9" instance=ExtResource( 9 )]
 
 position = Vector2( 360, 160 )
+
+[connection signal="dead" from="units/object9" to="." method="human_died"]
 
 
