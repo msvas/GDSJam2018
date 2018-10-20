@@ -11,10 +11,10 @@ func _execute():
 	timer = countdown_timer(0.3, "deactivate_fire_sprint")
 
 func activate_fire_sprint():
-	attributes.movement_speed = attributes.movement_speed * 3
+	attributes.movement_speed = attributes.movement_speed * 1.5
 
 func deactivate_fire_sprint():
-	attributes.movement_speed = attributes.movement_speed / 3
+	attributes.movement_speed = attributes.movement_speed / 1.5
 	timer = null
 
 #SUPPPORT METHODS

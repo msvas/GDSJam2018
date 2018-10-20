@@ -30,7 +30,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="object" index="0" instance=ExtResource( 1 )]
+[node name="object" instance=ExtResource( 1 )]
 
 script = SubResource( 1 )
 
